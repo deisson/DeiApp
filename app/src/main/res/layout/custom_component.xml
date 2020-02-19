@@ -14,7 +14,6 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="Title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +47,7 @@
         android:layout_marginTop="10dp"
         android:text="Fin"
         app:layout_constraintTop_toBottomOf="@+id/simpleSeekBar"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/simpleSeekBar"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

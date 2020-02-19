@@ -1,6 +1,7 @@
 package com.example.deiapp;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -30,26 +31,33 @@ public class Component421 extends ConstraintLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.custom_component, this);
 
-        int[] sets = {R.attr.artistText, R.attr.trackText, R.attr.buyButton};
+        int[] sets = {R.attr.titleText, R.attr.initText, R.attr.endText};
         TypedArray typedArray = context.obtainStyledAttributes(attrs, sets);
-        CharSequence artist = typedArray.getText(index0);
-        CharSequence track = typedArray.getText(index1);
-        CharSequence buyButton = typedArray.getText(index2);
+        CharSequence title = typedArray.getText(index0);
+        CharSequence init = typedArray.getText(index1);
+        CharSequence end = typedArray.getText(index2);
         typedArray.recycle();
 
         initComponents();
 
-        setInitTextView(artist);
-        setEndTextView(track);
-        setButton(buyButton);
+        setTilteTextView(title);
+        setInitTextView(init);
+        setEndTextView(end);
     }
 
     private void initComponents() {
-        initTextView = (TextView) findViewById(R.id.artist_Text);
+        titleView = (TextView) findViewById(R.id.title);
+        seekBarView = (SeekBar) findViewById(R.id.simpleSeekBar);
+        initTextView = (TextView) findViewById(R.id.initText);
+        endTextView = (TextView) findViewById(R.id.endText);
+    }
 
-        endTextView = (TextView) findViewById(R.id.track_Text);
+    public CharSequence getTitleTextView() {
+        return titleView.getText();
+    }
 
-        buyButton = (Button) findViewById(R.id.buy_Button);
+    public void setTilteTextView(CharSequence value) {
+        titleView.setText(value);
     }
 
     public CharSequence getInitTextView() {
@@ -66,13 +74,5 @@ public class Component421 extends ConstraintLayout {
 
     public void setEndTextView(CharSequence value) {
         endTextView.setText(value);
-    }
-
-    public CharSequence getButton() {
-        return buyButton.getText();
-    }
-
-    public void setButton(CharSequence value) {
-        buyButton.setText(value);
     }
 }
